@@ -1,8 +1,8 @@
-from data_access.grade_da import GradeDa
+from data_access.grade_da import GradeDA
 
 class GradeBL:
     def __init__(self):
-        self.grade_da = GradeDa()
+        self.grade_da = GradeDA()
 
      #بررسی اینکه نمره معتبر باشد. بین 0تا20 یا توصیفی
     def save(self, grade_book):
