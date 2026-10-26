@@ -3,7 +3,7 @@ import pickle
 
 class StudentDa:
     def __init__(self):
-        self.filename ="data_access/data/students_dat"
+        self.filename ="data_access/data/students.dat"
 
     def save(self,student):
         student_list=self.find_all()

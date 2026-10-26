@@ -92,6 +92,9 @@ class StudentView:
             self.father_name.set(selected_student[3])
             self.phone.set(selected_student[4])
 
+if __name__ == "__main__":
+    app = StudentView()
+
 
 
 
