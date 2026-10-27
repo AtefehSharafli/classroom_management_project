@@ -11,16 +11,16 @@ class Student:
 
     @property
     def national_id(self):
-        return self.national_id
+        return self._national_id
 
     @national_id.setter
     def national_id(self, value):
         Validator.national_id_validator(value)
-        self.national_id = value
+        self._national_id = value
 
     @property
     def first_name(self):
-        return self.__first_name
+        return self._first_name
 
     @first_name.setter
     def first_name(self, value):
