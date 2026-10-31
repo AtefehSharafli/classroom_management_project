@@ -9,15 +9,17 @@ class StudentDa:
         student_list=self.find_all()
         student_list.append(student)
 
-        os.makedirs(os.path.dirname(self.filename),exist_ok=True)
-        file=open(self.filename,"wb")
-        pickle.dump(student_list,file)
-        file.close()
+        os.makedirs(os.path.dirname(self.filename), exist_ok=True)
+        with open(self.filename,"wb") as file:
+         pickle.dump(student_list,file)
+
 
     def find_all(self):
-        if not os.path.exists(self.filename):
+        if not os.path.exists(self.filename)or os.path.getsize(self.filename) == 0:
             return []
-        file=open(self.filename,"rb")
-        student_list=pickle.load(file)
-        file.close()
-        return student_list
+        try:
+            with open(self.filename,"rb") as file:
+                return pickle.load(file)
+        except (EOFError, pickle.UnpicklingError):
+            return []
+

@@ -20,7 +20,7 @@ class Student:
 
     @property
     def first_name(self):
-        return self._first_name
+        return self.__first_name
 
     @first_name.setter
     def first_name(self, value):
@@ -37,7 +37,7 @@ class Student:
         self.__last_name = value
 
     def __repr__(self):
-        return f"Student({self.national_id}, {self.first_name}, {self.last_name}, {self.father_name}, {self.phone_number})"
+        return f"Student({self.national_id}, {self.__first_name}, {self.__last_name}, {self.father_name}, {self.phone_number})"
 
     def to_tuple(self):
         return (self.national_id, self.first_name, self.last_name, self.father_name, self.phone_number)

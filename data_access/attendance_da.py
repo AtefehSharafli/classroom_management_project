@@ -11,7 +11,7 @@ class AttendanceDa:
         attendance_list.append(attendance)
 
 #اگر پوشه  data نبود.خودکار می سازد که ارور نده
-        so.makedirs(os.path.dirname(self.filename), exist_ok=True)
+        os.makedirs(os.path.dirname(self.filename), exist_ok=True)
         file = open(self.filename, "wb")
         pickle.dump(attendance_list, file)
         file.close()
