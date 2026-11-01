@@ -3,17 +3,18 @@ import pickle
 
 class StudentDa:
     def __init__(self):
+#آدرس فایلی که اطلاعات دانش آموزان در آن ذخیره می شود
         self.filename ="data_access/data/students.dat"
-
+#ذخیره کردن دانش آموز جدید در فایل
     def save(self,student):
         student_list=self.find_all()
         student_list.append(student)
-
+#اگر پوشه وجود نداشت خودکار بسازه
         os.makedirs(os.path.dirname(self.filename), exist_ok=True)
         with open(self.filename,"wb") as file:
          pickle.dump(student_list,file)
 
-
+#خواندن و برگرداندن لیست دانش آموزان از فایل
     def find_all(self):
         if not os.path.exists(self.filename)or os.path.getsize(self.filename) == 0:
             return []

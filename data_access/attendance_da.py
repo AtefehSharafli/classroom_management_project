@@ -3,9 +3,9 @@ import pickle
 
 class AttendanceDa:
     def __init__(self):
-#فایلی که اطلاعات در آن ذخیره شده
+#اطلاعات حضور و غیاب در آن ذخیره شود
         self.filename="data_access/data/attendance.dat"
-#اطلاعات قبلی خوانده می شود و اطلاعات جدید اضافه می  شود
+#ذخیره کردن لیست حضور و غیاب در فایل
     def save(self, attendance):
         attendance_list=self.find_all()
         attendance_list.append(attendance)
@@ -15,7 +15,7 @@ class AttendanceDa:
         file = open(self.filename, "wb")
         pickle.dump(attendance_list, file)
         file.close()
-
+#خواندن و برگرداندن تمام اطلاعات از داخل فایل
     def find_all(self):
         if not os.path.exists(self.filename):
             return []
