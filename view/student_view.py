@@ -5,61 +5,61 @@ from controller.student_controller import StudentController
 class StudentView:
     def __init__(self):
         self.controller = StudentController()
-
+#ساخت پنجره اصلی مدیریت دانش آموزان
         self.win=Tk()
         self.win.geometry("820x400")
         self.win.title("مدیریت دانش آموزان")
-
+#برچسب و کادر ورودی نام
         Label(self.win, text="نام").place(x=63, y=20)
         self.first_name = StringVar()
         Entry(self.win, textvariable=self.first_name, width=22).place(x=110, y=20)
-
+#برچسب و کادر ورودی نام خانوادگی
         Label(self.win, text="نام خانوادگی").place(x=20, y=70)
         self.last_name = StringVar()
         Entry(self.win, textvariable=self.last_name,width=22).place(x=110, y=70)
-
+#برچسب و کادر ورودی کد ملی
         Label(self.win, text="کد ملی").place(x=48, y=120)
         self.national_id = StringVar()
         Entry(self.win, textvariable=self.national_id,width=22).place(x=110, y=120)
-
+#برچسب و کادر ورودی نام پدر
         Label(self.win, text="نام پدر").place(x=48, y=170)
         self.father_name=StringVar()
         Entry(self.win, textvariable=self.father_name,width=22).place(x=110, y=170)
-
+#برچسب و کادر ورودی شماره تماس
         Label(self.win, text="شماره تماس").place(x=20, y=220)
         self.phone = StringVar()
         Entry(self.win, textvariable=self.phone, width=22).place(x=110, y=220)
-
+#دکمه ذخیره اطلاعات دانش آموز
         Button(self.win,text="ذخیره", command=self.save_click, width=18).place(x=110, y=275)
-
+#ساخت جدول برای نمایش لیست دانش آموزان
         self.table= ttk.Treeview(self.win, show="headings", columns=[1,2,3,4,5])
         self.table.place(x=280, y=20, height=350, width=510)
-
+#تنظیم اندازه ستون های جدول
         self.table.column(1, width=90)  #نام
         self.table.column(2, width=110)   #نام خانوادگی
         self.table.column(3, width=100)  #کد ملی
         self.table.column(4, width=90)   #نام پدر
         self.table.column(5, width=110)  #شماره تماس
 
-
+#نام گذاری سرستون های جدول
         self.table.heading(1, text="نام")
         self.table.heading(2, text="نام خانوادگی")
         self.table.heading(3, text="کد ملی")
         self.table.heading(4, text="نام پدر")
         self.table.heading(5, text="تلفن")
-
+#کلیک روی جدول برای انتخاب دانش آموز
         self.table.bind("<ButtonRelease>", self.table_click )
-
+#پاکسازی فرم و بارگذاری اطلاعات در جدول
         self.reset_from()
         self.win.mainloop()
-
+#خالی کردن اطلاعات ورودی
     def reset_from(self):
         self.first_name.set("")
         self.last_name.set("")
         self.national_id.set("")
         self.father_name.set("")
         self.phone.set("")
-
+#پاک کردن جدول و خواندن دوباره اطلاعات از کنترلر
         for item in self.table.get_children():
             self.table.delete(item)
 
@@ -67,7 +67,7 @@ class StudentView:
         if status:
             for student in result:
                 self.table.insert("", END , values=student. to_tuple())
-
+#ثبت و ذخیره دانش آموز جدید
     def save_click(self):
         status, message=self.controller.save(
             self.first_name.get(),
@@ -76,12 +76,14 @@ class StudentView:
             self.father_name.get(),
             self.phone.get(),
         )
+#اگر ذخیره موفق بود پیام بده و فرم رو به روز کن
         if status:
             messagebox.showinfo("موفقیت", message)
             self.reset_from()
+#اگر خطا داشت پیام خطا نشون بده
         else:
             messagebox.showerror("خطا", message)
-
+#انتخاب یک سطر از جدول برای نمایش در کادرها
     def table_click(self, event):
         selected_id=self.table.focus()
         selected_student=self.table.item(selected_id)["values"]
