@@ -14,5 +14,7 @@ class Validator:
 # بررسی اینکه کد ملی وارد شده معتبر باشد(فقط عدد و دقیقا 10رقم باشد)
     @staticmethod
     def national_id_validator(national_id):
-        if not(len(str(national_id))==10 and str(national_id).isdigit()):
+#تبدیل به متن برای اینکه صفر های ابتدایی کد ملی حفظ شود
+        national_str=str(national_id)
+        if not(len(national_str)==10 and national_str.isdigit()):
             raise ValueError("Invalid National ID")
