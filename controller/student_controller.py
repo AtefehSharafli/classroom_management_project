@@ -5,9 +5,9 @@ class StudentController:
     def __init__(self):
         self.student_bl = StudentBL()
 #ذخیره کردن اطلاعت دانش آموز
-    def save(self,national_id,first_name,last_name, father_name, phone_number):
+    def save(self,first_name,last_name,national_id, father_name, phone_number):
         try:
-            student = Student(national_id,first_name,last_name,father_name,phone_number)
+            student = Student(first_name,last_name,national_id,father_name,phone_number)
 #فرستادن اطلاعات برای ذخیره
             self.student_bl.save(student)
             return True, "اطلاعات دانش آموز با موفقیت ثبت شد."

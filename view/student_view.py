@@ -70,11 +70,11 @@ class StudentView:
 #ثبت و ذخیره دانش آموز جدید
     def save_click(self):
         status, message=self.controller.save(
-            self.first_name.get(),
-            self.last_name.get(),
-            self.national_id.get(),
-            self.father_name.get(),
-            self.phone.get(),
+          self.first_name.get(),
+          self.last_name.get(),
+          self.national_id.get(),
+          self.father_name.get(),
+          self.phone.get()
         )
 #اگر ذخیره موفق بود پیام بده و فرم رو به روز کن
         if status:

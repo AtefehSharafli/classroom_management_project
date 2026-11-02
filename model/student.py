@@ -2,10 +2,10 @@ from tools.validation import  Validator
 
 class Student:
 #گرفتن اطلاعات اولیه دانش آموز (کد ملی،نام،نام خانوادگی، نام پدر و شماره تماس)
-    def __init__(self,national_id, first_name,last_name,father_name,phone_number):
-        self.national_id = national_id
+    def __init__(self,first_name,last_name,national_id,father_name,phone_number):
         self.first_name = first_name
         self.last_name = last_name
+        self.national_id = national_id
         self.father_name = father_name
         self.phone_number = phone_number
 
@@ -38,8 +38,8 @@ class Student:
         self.__last_name = value
 #نمایش اطلاعات دانش آموز به صورت متن
     def __repr__(self):
-        return f"Student({self.national_id}, {self.__first_name}, {self.__last_name}, {self.father_name}, {self.phone_number})"
+        return f"Student({self.__first_name}, {self.__last_name},{self.__national_id},  {self.father_name}, {self.phone_number})"
 
     def to_tuple(self):
-        return (self.national_id, self.first_name, self.last_name, self.father_name, self.phone_number)
+        return (self.first_name, self.last_name,self.national_id,self.father_name, self.phone_number)
 

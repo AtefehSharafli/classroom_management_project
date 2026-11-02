@@ -43,7 +43,7 @@ class AttendanceView:
 #اگر خطا داشت پیام خطا نشون بده
         else:
             messagebox.showerror("خطا" , message )
-#اجرای پنجره گرافیکی
+#اجرای پنجره گرافیکیسss
     def run(self):
         self.window.mainloop()
 

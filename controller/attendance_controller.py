@@ -13,11 +13,11 @@ class AttendanceController:
             self.attendance_bl.save(attendance)
             return True, "Attendance saved successfully"
         except Exception as e:
-            return False, f"save failed with {e}"
+            return False, f"Save failed: {e}"
 #گرفتن لیست همه حضور و غیاب ها
     def find_all(self):
         try:
             attendances_list = self.attendance_bl.find_all()
             return True, attendances_list
         except Exception as e:
-            return False, f"Operation Failed: {e}"
+            return False, f"Operation Faild: {e}"
