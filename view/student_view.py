@@ -101,7 +101,7 @@ class StudentView:
             self.phone.set(selected_student[4])
 
 if __name__ == "__main__":
-    app = StudentView()
+    app=StudentView()
 
 
 
