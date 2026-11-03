@@ -4,12 +4,16 @@ class Validator:
 #بررسی اینکه نام وارد شده معتبر باشد
     @staticmethod
     def name_validator(name):
-        if not re.match(r"^[\u0600-\u06FFa-zA-Z\s\u200c]{2,30}$", name):
+        pattern=r"^[\u0600-\u06FFa-zA-Z\s]+$"
+#        if not re.match(r"^[\u0600-\u06FFa-zA-Z\s\u200c]{2,30}$", name):
+        if not re.match(pattern,name):
             raise ValueError("Invalid Name")
 #بررسی اینکه نام خانوادگی وارد شده معتبر باشد
     @staticmethod
     def family_validator(family):
-        if not re.match(r"^[\u0600-\u06FFa-zA-Z\s\u200c]{2,40}$", family):
+        pattern=r"^[\u0600-\u06FFa-zA-Z\s]+$"
+        if not re.match(pattern,family):
+ #       if not re.match(r"^[\u0600-\u06FFa-zA-Z\s\u200c]{2,40}$", family):
             raise ValueError("Invalid Family")
 # بررسی اینکه کد ملی وارد شده معتبر باشد(فقط عدد و دقیقا 10رقم باشد)
     @staticmethod
