@@ -32,21 +32,21 @@ class StudentView:
 #دکمه ذخیره اطلاعات دانش آموز
         Button(self.win,text="ذخیره", command=self.save_click, width=18).place(x=110, y=275)
 #ساخت جدول برای نمایش لیست دانش آموزان
-        self.table= ttk.Treeview(self.win, show="headings", columns=[1,2,3,4,5])
+        self.table= ttk.Treeview(self.win, show="headings", columns=["1","2","3","4","5"])
         self.table.place(x=280, y=20, height=350, width=510)
 #تنظیم اندازه ستون های جدول
-        self.table.column(1, width=90)  #نام
-        self.table.column(2, width=110)   #نام خانوادگی
-        self.table.column(3, width=100)  #کد ملی
-        self.table.column(4, width=90)   #نام پدر
-        self.table.column(5, width=110)  #شماره تماس
+        self.table.column("1", width=90)  #نام
+        self.table.column("2", width=110)   #نام خانوادگی
+        self.table.column("3", width=100)  #کد ملی
+        self.table.column("4", width=90)   #نام پدر
+        self.table.column("5", width=110)  #شماره تماس
 
 #نام گذاری سرستون های جدول
-        self.table.heading(1, text="نام")
-        self.table.heading(2, text="نام خانوادگی")
-        self.table.heading(3, text="کد ملی")
-        self.table.heading(4, text="نام پدر")
-        self.table.heading(5, text="تلفن")
+        self.table.heading("1", text="نام")
+        self.table.heading("2", text="نام خانوادگی")
+        self.table.heading("3", text="کد ملی")
+        self.table.heading("4", text="نام پدر")
+        self.table.heading("5", text="تلفن")
 #کلیک روی جدول برای انتخاب دانش آموز
         self.table.bind("<ButtonRelease>", self.table_click )
 #پاکسازی فرم و بارگذاری اطلاعات در جدول
@@ -80,6 +80,12 @@ class StudentView:
         if status:
             messagebox.showinfo("موفقیت", message)
             self.reset_from()
+            for item in self.table.get_children():
+                self.table.delete(item)
+            status_list, result= self.controller.find_all()
+            if status_list:
+                for student in result:
+                    self.table.insert("", END , values=student. to_tuple())
 #اگر خطا داشت پیام خطا نشون بده
         else:
             messagebox.showerror("خطا", message)

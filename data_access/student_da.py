@@ -4,7 +4,9 @@ import pickle
 class StudentDa:
     def __init__(self):
 #آدرس فایلی که اطلاعات دانش آموزان در آن ذخیره می شود
-        self.filename ="data_access/data/students.dat"
+        import os
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        self.filename = os.path.join(current_dir, "students.dat")
 #ذخیره کردن دانش آموز جدید در فایل
     def save(self,student):
         student_list=self.find_all()
